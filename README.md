@@ -1,25 +1,25 @@
 # The Goal
 
-There are 2 dockerized services In this repo.
+There are 2 dockerized services in this repo.
 
-1. Exchange service which knows about the bidder endpoint.
+1. An exchange service that knows about the bidder's endpoint.
 
 2. Final bidder service
 
-This service is listening for exchange service, to place a bid.
-1. It Check for matching on geo, and bcat properties, and bids with 0.1 amount and ad url, if there is a match  
-2. It bids with 0 amount by if blocked category found in blockedCategories array, or there are no match with geo and bcat properties.
+This service listens on the exchange service to place a bid.
+1. Checks for matches by geolocation, category properties, and bids with a sum of 0.1 and ad URL if there is a match.
+2. It bids zero and with null value in ad property, if the blocked category is found in the blocked categories array, or if there is no match for the geolocation and category.
 
-There are pre-configured service with 2 campaigns
-to get campaigns, register or delete them, use /campaigns endpoint, with GET, POST and DELETE endpoint
+There are 2 pre-configured campaigns
+to get campaigns, register or delete them, use the /campaigns endpoint with a GET, POST and DELETE endpoint
 
 # Instructions
 
-To start the project run `docker compose up --build`
+To run the project, run `docker compose up --build`
 
 Get Campaigns
 
-url /campaigns
+url: /campaigns
 method: GET
 body: none
 
