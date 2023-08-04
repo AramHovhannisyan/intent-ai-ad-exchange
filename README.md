@@ -18,13 +18,13 @@ To run the project, run `docker compose up --build`
 
 To get, register or delete them, use the /campaigns endpoint with a GET, POST and DELETE endpoint
 
+# Examples
+
 Get Campaigns
 
 url: /campaigns
 method: GET
 body: none
-
-# Examples
 
 Create Campaigns
 
