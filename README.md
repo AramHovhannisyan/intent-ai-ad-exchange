@@ -32,8 +32,7 @@ url /campaigns
 
 method: POST
 
-body: [</br>
-  {</br>
+body: 
     [</br>
       {</br>
         "id": "campaign-id-123",</br>
@@ -58,8 +57,6 @@ body: [</br>
         }</br>
       }</br>
     ]</br>
-  }</br>
-]</br>
 
 Delete Campaigns
 
