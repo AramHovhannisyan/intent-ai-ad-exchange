@@ -32,8 +32,8 @@ url /campaigns
 
 method: POST
 
-body: [
-  {
+body: [__
+  {</br>
     [
       {
         "id": "campaign-id-123",
