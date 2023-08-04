@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  exchange:
+    image: harbor.intent.ai/interview/engineering
+    container_name: intent-exchange
+    environment:
+      - BIDDER_ENDPOINT=http://bidder_service:3000
+    networks:
+      - intent
+    volumes:
+      - ./:/app
+  bidder_service:
+    build:
+      context: ./bidder_service
+    ports:
+      - "3000:3000"
+    networks:
+      - intent
+networks:
+  intent:
