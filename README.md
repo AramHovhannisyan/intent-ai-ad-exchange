@@ -24,10 +24,14 @@ url: /campaigns
 method: GET
 body: none
 
+# Examples
+
 Create Campaigns
 
 url /campaigns
+
 method: POST
+
 body: [
   {
     [
