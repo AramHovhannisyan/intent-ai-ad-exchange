@@ -33,30 +33,30 @@ url /campaigns
 method: POST
 
 body: 
-    [</br>
-      {</br>
-        "id": "campaign-id-123",</br>
-        "name": "Summer Sale",</br>
-        "targeting": {</br>
-          "geo": {</br>
-            "country": "US",</br>
-            "region": "CA"</br>
-          },</br>
-          "bcat": ["IAB2-1", "IAB2-3"]</br>
-        }</br>
-      },</br>
-      {</br>
-        "id": "campaign-id-456",</br>
-        "name": "Winter Promotion",</br>
-        "targeting": {</br>
-          "geo": {</br>
-            "country": "US",</br>
-            "region": "NY"</br>
-          },</br>
-          "bcat": ["IAB7-12", "IAB7-25"]</br>
-        }</br>
-      }</br>
-    ]</br>
+    [
+      {
+        "id": "campaign-id-123",
+        "name": "Summer Sale",
+        "targeting": {
+          "geo": {
+            "country": "US",
+            "region": "CA"
+          },
+          "bcat": ["IAB2-1", "IAB2-3"]
+        }
+      },
+      {
+        "id": "campaign-id-456",
+        "name": "Winter Promotion",
+        "targeting": {
+          "geo": {
+            "country": "US",
+            "region": "NY"
+          },
+          "bcat": ["IAB7-12", "IAB7-25"]
+        }
+      }
+    ]
 
 Delete Campaigns
 
