@@ -1,4 +1,4 @@
-# The Goal
+# About project
 
 There are 2 dockerized services in this repo.
 
