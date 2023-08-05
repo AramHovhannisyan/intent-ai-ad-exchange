@@ -1,4 +1,4 @@
-export interface CampainGeoTypes {
+export interface CampaignGeoTypes {
   country: string,
   region: string
 }
@@ -7,7 +7,7 @@ export interface CampaignType{
   id: string,
   name: string,
   targeting: {
-    geo: CampainGeoTypes,
+    geo: CampaignGeoTypes,
     bcat: [string]
   }
 }

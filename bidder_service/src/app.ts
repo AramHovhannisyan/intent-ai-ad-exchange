@@ -1,7 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import logger from 'morgan';
 import cors from 'cors';
-import path from 'path';
 import { config } from "./config/config";
 import { Err } from "./types/ErrorTypes";
 import problem from './errorHandling/problem';
@@ -9,8 +8,6 @@ import campaignRouter from './routes/campaignsRouter';
 import bidderRouter from './routes/bidderRouter';
 
 const app = express();
-
-// Middlewares
 
 // Implement CORS
 
@@ -21,6 +18,7 @@ app.use(cors({
   "optionsSuccessStatus": 204
 }));
 
+// Use logger on dev environment
 if(config.server.env === 'dev'){
   app.use(logger('dev'));
 }
@@ -28,17 +26,18 @@ if(config.server.env === 'dev'){
 // Body Parser, reading data from body into req.body
 app.use(express.json());
 
-app.use('/public', express.static(path.join(process.cwd(), 'public')));
-
 /**
  * Routes
  */
 app.get('/health', (req, res) => res.sendStatus(200));
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
+// Campaign configuration Routes
 app.use('/campaigns', campaignRouter);
+// Bidder Routes
 app.use('/', bidderRouter);
 
+// Error handling middleware
 app.use((req, res, next) => next(problem(1002, req)));
 
 app.use((err: Err, req: Request, res: Response, next: NextFunction) => {
@@ -48,8 +47,9 @@ app.use((err: Err, req: Request, res: Response, next: NextFunction) => {
   res.json(body);
 });
 
-const port = config.server.port || 3000;
+const port = config.server.port;
 
+// Start App
 app.listen(port, () => {
   console.info(`listening on port ${port}`);
 });

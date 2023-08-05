@@ -3,6 +3,7 @@ import { getAll, createOne, deleteMany } from '../services/campaignsService';
 import validateCampaignsDeleteRequest from '../validations/validateCampaignsDeleteRequest';
 import validateCampaignsPostRequest from '../validations/validateCampaignsPostRequest';
 
+// Show all campaigns
 const getCampaigns = (req: Request, res: Response, next: NextFunction) => {
   const campaigns = getAll();
 
@@ -14,6 +15,7 @@ const getCampaigns = (req: Request, res: Response, next: NextFunction) => {
   });
 };
 
+// Create campaigns
 const createCampaigns = async (req: Request, res: Response, next: NextFunction) => {
   const newCampaigns = req.body;
 
@@ -45,6 +47,7 @@ const createCampaigns = async (req: Request, res: Response, next: NextFunction) 
   });
 };
 
+// Remove Campaigns by ids
 const deleteCampaigns = async (req: Request, res: Response, next: NextFunction) => {  
   const { error } = validateCampaignsDeleteRequest(req.body);
 

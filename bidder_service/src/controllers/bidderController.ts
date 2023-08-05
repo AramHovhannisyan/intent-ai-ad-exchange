@@ -2,10 +2,11 @@ import { Request, Response, NextFunction } from 'express';
 import blockedCategories from '../data/blockedCategories';
 import { getAll } from '../services/campaignsService';
 import { BidRequestType, GeoTypes, bidResponseType } from '../types/BidRequestType';
-import { CampainGeoTypes } from '../types/CampaignTypes';
+import { CampaignGeoTypes } from '../types/CampaignTypes';
 
 const campaigns = getAll();
 
+// Answer to ad-ex with bideResponse
 const answerToAdEx = async (req: Request, res: Response, next: NextFunction) => {
   const bidRequest: BidRequestType = req.body;
   const bidResponse = await generateBidResponse(bidRequest);
@@ -13,7 +14,9 @@ const answerToAdEx = async (req: Request, res: Response, next: NextFunction) => 
   return res.json(bidResponse);
 };
 
+// Generate bideResponse
 async function generateBidResponse(bidRequest: BidRequestType) {
+  // Default bid, if no match
   const bidResponse: bidResponseType = {
     id: bidRequest.id,
     bid: 0, // Default bid amount set to 0
@@ -32,8 +35,8 @@ async function generateBidResponse(bidRequest: BidRequestType) {
       return geoMatch && bcatMatch;
     });
 
+    // If a matching campaign is found, set the bid amount and ad creative URL
     if (matchedCampaign) {
-      // If a matching campaign is found, set the bid amount and ad creative URL
       bidResponse.bid = 0.1;
       bidResponse.ad = `https://example.com/ads/${matchedCampaign.id}.jpg`;
     }
@@ -44,14 +47,14 @@ async function generateBidResponse(bidRequest: BidRequestType) {
   return bidResponse;
 }
 
-function matchGeo(bidRequestGeo: GeoTypes, campaignGeo: CampainGeoTypes) {
-  // Match geo targeting criteria goes here
+// Check for geolocation match
+function matchGeo(bidRequestGeo: GeoTypes, campaignGeo: CampaignGeoTypes) {
   // Match country and region
   return bidRequestGeo.country === campaignGeo.country && bidRequestGeo.region === campaignGeo.region;
 }
 
+// Check if any blocked category is present in the bid request's bcat array
 function matchBlockedCategories(bidRequestBcat: string[], campaignBcat: string[]) {
-  // Check if any blocked category is present in the bid request's bcat array
   return campaignBcat.some((category) => bidRequestBcat.includes(category));
 }
 

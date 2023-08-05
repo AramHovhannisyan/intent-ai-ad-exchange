@@ -6,7 +6,7 @@ There are 2 dockerized services in this repo.
 
 2. Final bidder service
 
-This service listens on the exchange service to place a bid.
+This service listens on the exchange service to place a bid on `http://localhost:3000` port.
 1. Checks for matches by geolocation, category properties, and bids with a sum of 0.1 and ad URL if there is a match.
 2. It bids zero and with null value in ad property, if the blocked category is found in the blocked categories array, or if there is no match for the geolocation and category.
 
@@ -22,13 +22,13 @@ To get, register or delete them, use the /campaigns endpoint with a GET, POST an
 
 Get Campaigns
 
-url: /campaigns
+url: `http://localhost:3000/campaigns`
 method: GET
 body: none
 
 Create Campaigns
 
-url /campaigns
+url: `http://localhost:3000/campaigns`
 
 method: POST
 
@@ -60,7 +60,7 @@ body:
 
 Delete Campaigns
 
-url /campaigns
+url: `http://localhost:3000/campaigns`
 method: DELETE
 body: [
   "campaign-id-123",

@@ -1,34 +1,17 @@
 import fs from 'fs';
 import { CampaignType } from "../types/CampaignTypes";
+import initialCampaigns from '../data/initialCampaigns';
 
-let campaigns = [
-  {
-    id: '1',
-    name: 'Campaign 1',
-    targeting: {
-      geo: {
-        country: 'US',
-        region: 'CA',
-      },
-      bcat: ['IAB2-1'],
-    },
-  },
-  {
-    id: '2',
-    name: 'Campaign 2',
-    targeting: {
-      geo: {
-        country: 'US',
-        region: 'NY',
-      },
-      bcat: ['IAB3-1', 'IAB4-2'],
-    },
-  },
-  // Add more campaigns here
-];
+/**
+ * Save pre-configured campaigns array
+ * This array will be used as a simplified version of DB
+ */
+let campaigns = [...initialCampaigns];
 
+// Returning all campaigns from simplified DB
 const getAll = () => campaigns;
 
+// Add campaigns into simplified DB
 const createOne = (newCampaigns: CampaignType[]) => {
   try {
     campaigns = campaigns.concat(newCampaigns);
@@ -39,6 +22,7 @@ const createOne = (newCampaigns: CampaignType[]) => {
   }
 };
 
+// Remove campaigns from simplified DB
 const deleteMany = (campaignIdsToDelete: any[]) => {
   try {
     campaigns = campaigns.filter((campaign) => {
