@@ -6,17 +6,17 @@ There are 2 dockerized services in this repo.
 
 2. Final bidder service
 
-This service listens on the exchange service to place a bid on `http://localhost:3000` port.
-1. Checks for matches by geolocation, category properties, and bids with a sum of 0.1 and ad URL if there is a match.
-2. It bids zero and with null value in ad property, if the blocked category is found in the blocked categories array, or if there is no match for the geolocation and category.
+This service listens to the exchange service to place a bid on `http://localhost:3000` port.
+1. Checks for matches by geo-location, category properties, and bids with a sum of 0.1 and simple ad, if there is a match.
+2. It bids zero amount and null value in the ad property, if the blocked category is found in the blocked categories array, or if there is no match for the geo-location and category.
 
 There are 2 pre-configured campaigns with sample data.
 
 # Instructions
 
-To run the project, run `docker compose up --build`
+To start the project, run `docker compose up --build`
 
-To get, register or delete them, use the /campaigns endpoint with a GET, POST and DELETE endpoint
+To get, register or delete campaigns, use the /campaigns endpoint with a GET, POST and DELETE methods.
 
 # Examples
 
